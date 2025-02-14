@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #6a0dad, #b565f7, #ff66b2); 
+            font-family: 'Pacifico', cursive; 
+            text-align: center; 
+            color: white; 
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        .hidden { display: none; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); opacity: 0.8; }
+            50% { transform: translateY(-20px); opacity: 1; }
+            100% { transform: translateY(0px); opacity: 0.8; }
+        }
+        .thank-you {
+            font-size: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .flower {
+            font-size: 4rem;
+            animation: bloom 2s ease-in-out infinite alternate;
+        }
+        @keyframes bloom {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="overflow-auto">
+    <div class="container">
+        <div id="section1">
+            <!-- <h1 class="text-4xl">Hey Ogu-amanam ❤️</h1> -->
+            <h2 class="text-3xl">Ogu-amanam</h2>
+            <p class="text-lg mt-8 text-left text-align">
+                From cackling at midnight like two unserious humans 😂,<br><br>  
+                To marathon five-hour calls 📞,<br><br>  
+                To feasting on the best food like certified foodies 🍕🍣,<br><br>  
+                To you betraying me for village guys (side-eye activated 👀😤),<br><br>  
+                To hunting for the perfect shoe models like detectives 🕵️‍♀️👠,<br><br>  
+                To spilling tea on your endless list of admirers from all seven continents ☕🌍  
+                (girl, you’re international 😂)…<br><br>  
+                Happy Valentine’s Day to my absolute LOML! 💜💕
+            </p>
+            <button id="nextBtn1" class="mt-6 px-6 py-3 bg-purple-600 text-white text-lg font-bold rounded-full shadow-lg hover:bg-purple-700 transition">Next</button>
+        </div>
+        
+        <div id="section2" class="hidden">
+            <h2 class="text-3xl">Caught you looking cute 🎥</h2>
+            <video class="mt-4 w-full max-w-md mx-auto" controls>
+                <source src="val video 2.mp4" type="video/mp4">
+            </video>
+            <div class="flex justify-between mt-6">
+                <button id="backBtn1" class="px-6 py-3 bg-gray-500 text-white text-lg font-bold rounded-full shadow-lg hover:bg-gray-600 transition">Back</button>
+                <button id="nextBtn2" class="px-6 py-3 bg-purple-600 text-white text-lg font-bold rounded-full shadow-lg hover:bg-purple-700 transition">Next</button>
+            </div>
+        </div>
+
+        <div id="section3" class="hidden">
+            <h2 class="">Here's a virtual flower for you 🌸</h2>
+            <div class="flower">🌸</div>
+            <p class=" mt-4">You're worth everything beautiful, Chidera <br><br>
+             <p class="m-4 py-6 text-3xl">HAPPY VALENTINE'S DAY. 💜</p>   
+            </p>
+            <button id="backBtn2" class="mt-6 px-6 py-3 bg-gray-500 text-white text-lg font-bold rounded-full shadow-lg hover:bg-gray-600 transition">Back</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("nextBtn1").addEventListener("click", function() {
+            document.getElementById("section1").classList.add("hidden");
+            document.getElementById("section2").classList.remove("hidden");
+        });
+        
+        document.getElementById("backBtn1").addEventListener("click", function() {
+            document.getElementById("section2").classList.add("hidden");
+            document.getElementById("section1").classList.remove("hidden");
+        });
+
+        document.getElementById("nextBtn2").addEventListener("click", function() {
+            document.getElementById("section2").classList.add("hidden");
+            document.getElementById("section3").classList.remove("hidden");
+        });
+
+        document.getElementById("backBtn2").addEventListener("click", function() {
+            document.getElementById("section3").classList.add("hidden");
+            document.getElementById("section2").classList.remove("hidden");
+        });
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement("div");
+            emoji.textContent = "❤️";
+            emoji.classList.add("floating-emoji");
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 5000);
+        }
+        setInterval(createFloatingEmoji, 1000);
+    </script>
+</body>
+</html>
